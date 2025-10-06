@@ -20,7 +20,7 @@ Are Here! </h1>
     
     <div className="bg-red text-white p-4">Tailwind Works!</div>
 
-    
+  
     </footer>;
 }
 
