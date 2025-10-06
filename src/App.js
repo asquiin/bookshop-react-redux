@@ -6,6 +6,7 @@ import Cart from './pages/Cart/Cart';
 import Footer from './components/Footer'
 import headerIcon from './assets/header-books.svg'
 import headerNeth from './assets/header-neth.svg'
+import headerUser from './assets/header-user.svg'
 import './app.css'
 
 class App extends Component {
@@ -29,6 +30,11 @@ render() {
 				<Link to="/Cart">Cart</Link>
 			</li>
 			</ul>	
+
+<div className="flex"> <img className="w-[70px]" src={headerUser}/>
+
+				</div>
+
 			</ul>
 		<Routes>
 				<Route exact path='/' element={< Home />}></Route>
