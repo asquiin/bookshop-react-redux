@@ -27,6 +27,7 @@ render() {
 				<Route exact path='/Cart' element={< Cart />}></Route>
 		</Routes>
 		</div>
+
 	</Router>
 );
 }
