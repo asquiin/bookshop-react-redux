@@ -25,9 +25,9 @@ const footerText = {
 
 function Footer() {
   return (
-    <footer>
+    <footer className="">
       <div className="w-full flex justify-center align-center">
-        <div className="flex w-full gap-[90px] w-[89%]">
+        <div className="flex gap-[90px] w-[89%]">
  
           <div>
             <img src={footerBooks} alt="Books" />
