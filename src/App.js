@@ -4,6 +4,8 @@ import Home from './pages/Home/Home';
 import Books from './pages/Books/Books';
 import Cart from './pages/Cart/Cart';
 import Footer from './components/Footer'
+import headerIcon from './assets/header-books.svg'
+import headerNeth from './assets/header-neth.svg'
 import './app.css'
 
 class App extends Component {
@@ -11,7 +13,12 @@ render() {
 	return (
 	<Router>
 		<div className="App">
+
 			<ul className="App-header">
+				<div className="flex"> <img className="w-[70px]" src={headerIcon}/>
+				<img className="w-[100px]" src={headerNeth}/>
+				</div>
+			<ul className="flex justify-around gap-10"> 			
 			<li>
 				<Link to="/">Home</Link>
 			</li>
@@ -21,6 +28,7 @@ render() {
 			<li>
 				<Link to="/Cart">Cart</Link>
 			</li>
+			</ul>	
 			</ul>
 		<Routes>
 				<Route exact path='/' element={< Home />}></Route>

@@ -6,10 +6,10 @@
 html, body, #root, .App {
   height: 100%;
   margin: 0;
-    font-family: 'Bona Nova', serif;
+  font-family: 'Bona Nova', serif;
 }
   .App-header {
-    background-color: #c39797;
+   background: #000000;
     display: flex;
     justify-content: space-around;
     align-items: center;
