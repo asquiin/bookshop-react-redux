@@ -19,7 +19,7 @@ render() {
 				<div className="flex"> <img className="w-[70px]" src={headerIcon}/>
 				<img className="w-[100px]" src={headerNeth}/>
 				</div>
-			<ul className="flex justify-around gap-10"> 			
+			<ul className="flex justify-around gap-[80px]"> 			
 			<li>
 				<Link to="/">Home</Link>
 			</li>
