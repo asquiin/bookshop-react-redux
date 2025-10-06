@@ -1,7 +1,7 @@
 import React from 'react';
-  
-function Footer (){
-    return <h1>footer</h1>
+
+function Footer() {
+  return <footer>© 2025 My Book Store</footer>;
 }
-  
+
 export default Footer;

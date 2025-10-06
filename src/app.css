@@ -24,4 +24,16 @@ body {
   .App-header a:hover {
     color: #f0f8ff;
   }
+
+  main {
+  flex: 1; /* чтобы занимал всё доступное пространство */
+  padding: 20px;
+}
+
+footer {
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+}
   

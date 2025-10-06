@@ -3,6 +3,7 @@ import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Books from './pages/Books/Books';
 import Cart from './pages/Cart/Cart';
+import Footer from './components/Footer'
 import './app.css'
 
 class App extends Component {
@@ -27,6 +28,8 @@ render() {
 				<Route exact path='/Cart' element={< Cart />}></Route>
 		</Routes>
 		</div>
+
+		<Footer/>
 
 	</Router>
 );
