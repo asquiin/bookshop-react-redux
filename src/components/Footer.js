@@ -4,7 +4,8 @@ import footerBooks from "../assets/footer-books.svg";
 function Footer() {
   return (
     <footer>
-      <div className="flex w-full p-10 gap-[90px]">
+    <div className="w-full flex justify-center align-center"> 
+      <div className="flex w-full gap-[90px] w-[89%]">
         <div>
           <img src={footerBooks} alt="Books" />
         </div>
@@ -26,23 +27,34 @@ function Footer() {
               unlock more savings with every purchase!
             </p>
           </div>
-          <div className="flex justify-between mt-10 text-[#CC9600]">
+          <div className="flex justify-between mt-10 text-[#CC9600] text-start">
             <ul>
-              <li>800+</li>
+              <li className="text-[40px]">800+</li>
               <li>Book Listing</li>
             </ul>
 
             <ul>
-              <li>1K+</li>
+              <li className="text-[40px]">1K+</li>
               <li>Registered Members</li>
             </ul>
 
             <ul>
-              <li>50+</li>
+              <li className="text-[40px]">50+</li>
               <li>Branch Count</li>
             </ul>
           </div>
+          <div className="pt-5 flex justify-start">
+            <button className="w-[193px] h-[43px] border border-[#CC9600] rounded-lg">
+              {" "}
+              Explore More
+            </button>
+          </div>
         </div>
+      </div>
+      </div>
+      <div className="flex justify-center">
+        {" "}
+        <hr className="w-[90%]" />{" "}
       </div>
       © 2025 My Book Store
       <div className="bg-red text-white p-4">Tailwind Works!</div>

@@ -30,7 +30,7 @@ html, body, #root, .App {
   }
 
   main {
-  flex: 1; /* чтобы занимал всё доступное пространство */
+  flex: 1; 
   padding: 20px;
 }
 
