@@ -1,5 +1,6 @@
 import React from "react";
 import footerBooks from "../assets/footer-books.svg";
+import footerIcon from "../assets/footer-icon.svg"
 
 function Footer() {
   return (
@@ -51,7 +52,14 @@ function Footer() {
           </div>
         </div>
       </div>
+
+ 
       </div>
+ <div className="flex justify-center">  <div className="flex justify-start w-[92%]"><img  src={footerIcon}/></div></div>
+ 
+       
+
+
       <div className="flex justify-center">
         {" "}
         <hr className="w-[90%]" />{" "}
