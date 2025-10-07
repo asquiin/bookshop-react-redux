@@ -55,17 +55,17 @@ function Books() {
         ))}
       </div> */}
 
-           <div className="px-6 py-8">
+      <div className="px-6 py-8">
+
+        <h1 className="font-bold text-[40px] text-[#CC9600] flex justify-center mt-10 mb-10">Explore All Books Here</h1>
         <div className="flex items-center justify-center gap-4 mb-10 mt-10">
-
-
           <form onSubmit={onSearch} className="flex items-center gap-2">
             <input
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search books…"
-              className="border rounded-lg px-3 py-2 outline-none"
+              className="border rounded-lg px-3 py-2 outline-none w-[400px]"
             />
             <button
               type="submit"
@@ -104,6 +104,8 @@ function Books() {
                   <div className="text-xs text-gray-600">
                     {(v.authors && v.authors.join(", ")) || "Unknown author"}
                   </div>
+
+                  
                 </li>
               );
             })}
