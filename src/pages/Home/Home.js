@@ -1,15 +1,10 @@
 import React, { useEffect, useState } from "react";
 import mainPhoto from "../../assets/main-photo.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchBooks } from "../../actions"; // или "../../actions/index.js"
+import { fetchBooks } from "../../actions"; 
 
 function Home() {
   const dispatch = useDispatch();
-
-  // Если у тебя один rootReducer без combineReducers:
-  // const { books = [], loading, error } = useSelector((state) => state);
-
-  // Если у тебя combineReducers({ app: rootReducer }):
   const { books = [], loading, error } = useSelector((state) => state.app || state);
 
   const [query, setQuery] = useState("Harry Potter");
@@ -17,7 +12,7 @@ function Home() {
   // Первый запрос при маунте
   useEffect(() => {
     dispatch(fetchBooks(query));
-  }, [dispatch]); // намеренно без query, чтобы не стрелял на каждый ввод
+  }, [dispatch]); 
 
   const onSearch = (e) => {
     e.preventDefault();
@@ -36,10 +31,10 @@ function Home() {
       </div>
 
       <div className="px-6 py-8">
-        <div className="flex items-center justify-between gap-4 mb-6">
+        <div className="flex items-center justify-center gap-4 mb-10 mt-10">
           <h1 className="text-[48px] font-bold">Our Best Picks</h1>
 
-          <form onSubmit={onSearch} className="flex items-center gap-2">
+          {/* <form onSubmit={onSearch} className="flex items-center gap-2">
             <input
               type="text"
               value={query}
@@ -53,7 +48,7 @@ function Home() {
             >
               Search
             </button>
-          </form>
+          </form> */}
         </div>
 
         {loading && <p>Загрузка…</p>}
