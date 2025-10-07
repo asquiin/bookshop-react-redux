@@ -1,6 +1,8 @@
-import React from "react";
 import footerBooks from "../assets/footer-books.svg";
 import footerIcon from "../assets/footer-icon.svg";
+
+import React from "react";
+import { useLocation } from "react-router-dom";
 
 const footerStats = [
   { value: "800+", label: "Book Listing" },
@@ -24,16 +26,16 @@ const footerText = {
 };
 
 function Footer() {
+    const { pathname } = useLocation();
+  const isHome = pathname === "/";
   return (
     <footer className="">
       <div className="w-full flex justify-center align-center">
-        <div className="flex justify-between w-[89%]">
+      {isHome && ( <div className="flex justify-between w-[89%]">
  
           <div>
             <img src={footerBooks} alt="Books" />
           </div>
-
-  
           <div className="w-[50%]">
 
             <div className="pt-10 text-start">
@@ -46,8 +48,6 @@ function Footer() {
               </h1>
               <p className="mt-4 text-[30px]">{footerText.description}</p>
             </div>
-
-
             <div className="flex justify-between mt-10 text-[#CC9600] text-start">
               {footerStats.map((item, index) => (
                 <ul key={index}>
@@ -56,18 +56,15 @@ function Footer() {
                 </ul>
               ))}
             </div>
-
-
             <div className="pt-5 flex justify-start">
               <button className="w-[193px] h-[43px] border border-[#CC9600] rounded-lg">
                 {footerText.buttonLabel}
               </button>
             </div>
           </div>
+        </div>  )} 
 
 
-
-        </div>
       </div>
 
 
