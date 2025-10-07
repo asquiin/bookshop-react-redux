@@ -7,18 +7,13 @@ function Home() {
   const dispatch = useDispatch();
   const { books = [], loading, error } = useSelector((state) => state.app || state);
 
-  const [query, setQuery] = useState("Harry Potter");
+  const [query, setQuery] = useState("Лев Толстой");
 
-  // Первый запрос при маунте
   useEffect(() => {
     dispatch(fetchBooks(query));
   }, [dispatch]); 
 
-  const onSearch = (e) => {
-    e.preventDefault();
-    if (!query.trim()) return;
-    dispatch(fetchBooks(query.trim()));
-  };
+
 
   return (
     <>
@@ -34,28 +29,15 @@ function Home() {
         <div className="flex items-center justify-center gap-4 mb-10 mt-10">
           <h1 className="text-[48px] font-bold">Our Best Picks</h1>
 
-          {/* <form onSubmit={onSearch} className="flex items-center gap-2">
-            <input
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search books…"
-              className="border rounded-lg px-3 py-2 outline-none"
-            />
-            <button
-              type="submit"
-              className="px-4 py-2 rounded-lg bg-black text-white"
-            >
-              Search
-            </button>
-          </form> */}
         </div>
 
         {loading && <p>Загрузка…</p>}
         {error && <p className="text-red-600">Ошибка: {error}</p>}
 
+        <div className="flex justify-center align-center">
+
         {!loading && !error && (
-          <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+          <ul className="grid grid-cols-2 grid-rows-2 gap-5">
             {books.map((b) => {
               const v = b.volumeInfo || {};
               const thumb =
@@ -68,7 +50,7 @@ function Home() {
                     <img
                       src={thumb}
                       alt={v.title}
-                      className="w-full h-48 object-cover rounded-lg mb-2"
+                      className="w-full h-65 object-cover rounded-lg mb-2"
                     />
                   ) : (
                     <div className="w-full h-48 bg-gray-200 rounded-lg mb-2" />
@@ -84,6 +66,7 @@ function Home() {
             })}
           </ul>
         )}
+         </div>
       </div>
     </>
   );

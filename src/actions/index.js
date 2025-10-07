@@ -23,7 +23,7 @@ export const fetchBooks = (query) => async (dispatch) => {
       `https://www.googleapis.com/books/v1/volumes`,
       {
         params: {
-          maxResults: 5,
+          maxResults: 4,
           orderBy: "relevance",
           q: query,
           key: "AIzaSyBSdsuDMR2_8Rj8oSkDhvYfilF5gPz4e5A", // ключ не меняется
