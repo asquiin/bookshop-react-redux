@@ -5,13 +5,21 @@ import { fetchBooks } from "../../actions";
 
 function Home() {
   const dispatch = useDispatch();
-  const { books = [], loading, error } = useSelector((state) => state.app || state);
+  const { books = [], loading, error } = useSelector((s) => s.app || s);
 
   const [query, setQuery] = useState("Лев Толстой");
+  const [limit, setLimit] = useState(4);
 
+  // Первичная загрузка
   useEffect(() => {
-    dispatch(fetchBooks(query));
-  }, [dispatch]); 
+    dispatch(fetchBooks({ q: query, maxResults: limit }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // один раз при маунте
+
+  const onSearch = (e) => {
+    e.preventDefault();
+    dispatch(fetchBooks({ q: query.trim(), maxResults: Number(limit) || 4 }));
+  };
 
 
 
