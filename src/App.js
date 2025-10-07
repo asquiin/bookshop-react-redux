@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Books from './pages/Books/Books';
 import Cart from './pages/Cart/Cart';
+import Details from './pages/Books/Details'
 import Footer from './components/Footer';
 import headerIcon from './assets/header-books.svg';
 import headerNeth from './assets/header-neth.svg';
@@ -39,6 +40,7 @@ class App extends Component {
               <Route path="/" element={<Home />} />
               <Route path="/Books" element={<Books />} />
               <Route path="/Cart" element={<Cart />} />
+                       <Route path="/details" element={<Details />} />
             </Routes>
           </main>
 
