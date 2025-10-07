@@ -13,9 +13,9 @@ class App extends Component {
   render() {
     return (
       <Router>
-        {/* ВЕСЬ ЛЕЙАУТ */}
+
         <div className="min-h-screen flex flex-col">
-          {/* HEADER */}
+
           <header className="App-header">
             <div className="flex">
               <img className="w-[70px]" src={headerIcon} alt="" />
@@ -33,7 +33,7 @@ class App extends Component {
             </div>
           </header>
 
-          {/* MAIN растягивается и отталкивает футер вниз */}
+     
           <main className="flex-1 p-0 m-0">
             <Routes>
               <Route path="/" element={<Home />} />
@@ -42,7 +42,7 @@ class App extends Component {
             </Routes>
           </main>
 
-          {/* FOOTER всегда внизу */}
+  
           <Footer />
         </div>
       </Router>
