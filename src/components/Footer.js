@@ -27,23 +27,24 @@ function Footer() {
   return (
     <footer className="">
       <div className="w-full flex justify-center align-center">
-        <div className="flex gap-[90px] w-[89%]">
+        <div className="flex justify-between w-[89%]">
  
           <div>
             <img src={footerBooks} alt="Books" />
           </div>
 
   
-          <div className="w-[40%]">
+          <div className="w-[50%]">
+
             <div className="pt-10 text-start">
-              <h1 className="text-[40px] leading-tight">
+              <h1 className="text-[70px] leading-tight">
                 Your favourite{" "}
                 <span className="text-[#CC9600]">
                   {footerText.highlight}
                   <br /> Are Here!
                 </span>
               </h1>
-              <p className="mt-4">{footerText.description}</p>
+              <p className="mt-4 text-[30px]">{footerText.description}</p>
             </div>
 
 
@@ -63,6 +64,9 @@ function Footer() {
               </button>
             </div>
           </div>
+
+
+
         </div>
       </div>
 
