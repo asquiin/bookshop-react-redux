@@ -27,7 +27,7 @@ function Home() {
 
   return (
     <>
-      <div className="w-full h-[90%]">
+      <div className="w-full h-[100%]">
         <img
           src={mainPhoto}
           alt="Main background"

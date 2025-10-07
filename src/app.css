@@ -8,6 +8,15 @@ html, body, #root, .App {
   margin: 0;
   font-family: 'Bona Nova', serif;
 }
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.App main {
+  flex: 1; /* растягиваем основную часть */
+}
   .App-header {
    background: #000000;
     display: flex;
