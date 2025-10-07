@@ -8,7 +8,7 @@ function Books() {
   const dispatch = useDispatch();
     const { books = [], loading, error } = useSelector((state) => state.app || state);
   
-    const [query, setQuery] = useState("Harry Potter");
+    const [query, setQuery] = useState("fairy tales");
 
   const [addedItemIds, setAddedItemIds] = useState([]);
 
