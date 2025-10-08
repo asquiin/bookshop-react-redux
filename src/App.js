@@ -40,7 +40,7 @@ class App extends Component {
               <Route path="/" element={<Home />} />
               <Route path="/Books" element={<Books />} />
               <Route path="/Cart" element={<Cart />} />
-                       <Route path="/details" element={<Details />} />
+                       <Route path="/details/:id" element={<Details />} />
             </Routes>
           </main>
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import mainPhoto from "../../assets/main-photo.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBooks } from "../../actions"; 
+import { Link } from "react-router-dom";
 
 function Home() {
   const dispatch = useDispatch();
@@ -55,11 +56,13 @@ function Home() {
               return (
                 <li key={b.id} className="p-3 rounded-xl shadow">
                   {thumb ? (
+                     <Link to={`/details/${b.id}`}> 
                     <img
                       src={thumb}
                       alt={v.title}
                       className="w-full h-65 object-cover rounded-lg mb-2"
                     />
+                    </Link>
                   ) : (
                     <div className="w-full h-48 bg-gray-200 rounded-lg mb-2" />
                   )}
