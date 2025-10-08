@@ -20,7 +20,6 @@ function Home() {
       meta: { mode: "list" },
       onSuccess: (res) => Array.isArray(res.data?.items) ? res.data.items : [],
     }));
-    // если нужно грузить только один раз при маунте, поставь [] вместо [query, limit]
   }, [dispatch, query, limit]);
 
   return (
