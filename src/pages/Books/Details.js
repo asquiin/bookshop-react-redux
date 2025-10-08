@@ -1,3 +1,4 @@
+import bookIcon from "../../assets/book-icon.svg"
 import React, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -54,11 +55,16 @@ return (
 
      
         <section className="bg-white rounded-2xl p-6 pl-[190px] overflow-visible">
-          <h2 className="text-3xl font-bold mb-2">{v.title || "Untitled"}</h2>
+         <div className="flex justify-start align-center items-center gap-2">  
+          <img src={bookIcon}/>
+          <h4 className="text-2xl font-bold">Publisher: {v.publisher}</h4>
+          </div>
+
+          <h2 className="text-2xl font-bold mb-2">{v.title || "Untitled"}</h2>
           <div className="text-sm text-gray-600 mb-4">
             {(v.authors && v.authors.join(", ")) || "Unknown author"}
           </div>
-          {v.description && <p className="mb-4 whitespace-pre-line">{v.description}</p>}
+          {v.description && <span className="mb-4 whitespace-pre-line">{v.description}</span>}
           <div className="text-sm">Published: {v.publishedDate || "—"}</div>
           <div className="text-sm">Pages: {v.pageCount || "—"}</div>
         </section>
