@@ -31,36 +31,40 @@ export default function Details() {
   const v = book.volumeInfo || {};
   const cover = v.imageLinks?.thumbnail || v.imageLinks?.smallThumbnail;
 
-  return (
-    <div className="">
-      {/* <Link to="/Books" className="inline-block mb-4 underline">
-        ← Back to Books
-      </Link> */}
-
-
-      <div className="w-full h-[100vh] flex gap-[10%]">
-        <div className="w-[40%] h-[100vh] bg-black">
-
-              <h1 className="text-2xl font-bold mb-2 text-white">{v.title || "Untitled"}</h1>
-              <h4 className="text-[#FFDD7E]"> {v.authors[0] || "Untitled"} </h4>
+return (
+  <div>
+    <div className="relative">
+      <div className="absolute left-1/2 -translate-x-1/2 -top-0 z-20">
+        <div className="w-[240px] md:w-[280px] lg:w-[320px] aspect-[3/4] mt-[200px] overflow-hidden shadow-xl">
           {cover ? (
-            <img src={cover} alt={v.title} className="w-full rounded-lg" />
+            <img src={cover} alt={v.title} className="w-full h-full object-cover" />
           ) : (
-            <div className="w-full h-64 bg-gray-200 rounded-lg" />
+            <div className="w-full h-full bg-gray-200" />
           )}
         </div>
-        <div className="w-[60%] h-full /* bg-white */">
-          <div className="md:col-span-2">
-            <h1 className="text-3xl font-bold mb-2">{v.title || "Untitled"}</h1>
-            <div className="text-sm text-gray-600 mb-4">
-              {(v.authors && v.authors.join(", ")) || "Unknown author"}
-            </div>
-            {v.description && <p className="mb-4">{v.description}</p>}
-            <div className="text-sm">Published: {v.publishedDate || "—"}</div>
-            <div className="text-sm">Pages: {v.pageCount || "—"}</div>
+      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+        <aside className="bg-black text-white p-6 pr-[190px] 
+                         h-[100svh] lg:h-screen lg:sticky lg:top-0 overflow-visible">
+                          <div className="mt-[50px] pl-10"> 
+          <h1 className="text-2xl font-bold mb-2">{v.title || "Untitled"}</h1>
+          <h4 className="text-[#FFDD7E]">{v.authors?.[0] || "Unknown author"}</h4>
           </div>
-        </div>
+        </aside>
+
+     
+        <section className="bg-white rounded-2xl p-6 pl-[190px] overflow-visible">
+          <h2 className="text-3xl font-bold mb-2">{v.title || "Untitled"}</h2>
+          <div className="text-sm text-gray-600 mb-4">
+            {(v.authors && v.authors.join(", ")) || "Unknown author"}
+          </div>
+          {v.description && <p className="mb-4 whitespace-pre-line">{v.description}</p>}
+          <div className="text-sm">Published: {v.publishedDate || "—"}</div>
+          <div className="text-sm">Pages: {v.pageCount || "—"}</div>
+        </section>
       </div>
     </div>
-  );
+  </div>
+);
+
 }
