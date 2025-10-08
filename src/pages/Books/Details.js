@@ -35,7 +35,7 @@ export default function Details() {
 return (
   <div>
     <div className="relative">
-      <div className="absolute z-20 -translate-x-1/2 top-24 left-1/2 lg:left-[calc(40%+2.5rem)] pointer-events-none">
+      <div className="absolute z-20 -translate-x-1/2 top-24 left-1/2 lg:left-[calc(38%+2.5rem)] pointer-events-none">
         <div className="w-[240px] md:w-[280px] lg:w-[320px] aspect-[3/4] mt-[200px] overflow-hidden shadow-xl">
           {cover ? (
             <img src={cover} alt={v.title} className="w-full h-full object-cover" />
@@ -44,8 +44,9 @@ return (
           )}
         </div>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-10 items-start">
-        <aside className="bg-black text-white p-6 pr-[190px] 
+
+      <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-0 items-start">
+        <aside className="bg-black text-white p-2
                          h-[100svh] lg:h-screen lg:sticky lg:top-0 overflow-visible">
                           <div className="mt-[50px] pl-10"> 
           <h1 className="text-2xl font-bold mb-2">{v.title || "Untitled"}</h1>
@@ -54,7 +55,8 @@ return (
         </aside>
 
      
-        <section className="bg-white rounded-2xl p-6  overflow-visible">
+        <section className="rounded-2xl p-6 overflow-visible h-full">
+          <div className="px-10 pl-[200px] pt-[20%]"> 
          <div className="flex justify-start align-center items-center">  
           <img src={bookIcon}/>
           <h4 className="text-2xl font-bold">Publisher: {v.publisher}</h4>
@@ -65,8 +67,10 @@ return (
           {v.description && <span className="mb-4 whitespace-pre-line">{v.description}</span>}
           <div className="text-sm">Published: {v.publishedDate || "—"}</div>
           <div className="text-sm">Pages: {v.pageCount || "—"}</div>
+          </div>
         </section>
       </div>
+
     </div>
   </div>
 );
