@@ -34,7 +34,7 @@ export default function Details() {
 return (
   <div>
     <div className="relative">
-      <div className="absolute left-1/2 -translate-x-1/2 -top-0 z-20">
+      <div className="absolute z-20 -translate-x-1/2 top-24 left-1/2 lg:left-[calc(40%+2.5rem)] pointer-events-none">
         <div className="w-[240px] md:w-[280px] lg:w-[320px] aspect-[3/4] mt-[200px] overflow-hidden shadow-xl">
           {cover ? (
             <img src={cover} alt={v.title} className="w-full h-full object-cover" />
@@ -43,7 +43,7 @@ return (
           )}
         </div>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-10 items-start">
         <aside className="bg-black text-white p-6 pr-[190px] 
                          h-[100svh] lg:h-screen lg:sticky lg:top-0 overflow-visible">
                           <div className="mt-[50px] pl-10"> 
