@@ -56,13 +56,13 @@ return (
 
      
         <section className="rounded-2xl p-6 overflow-visible h-full">
-          <div className="px-10 pl-[200px] pt-[20%]"> 
-         <div className="flex justify-start align-center items-center">  
+          <div className="px-10 pl-[200px] pt-[25%]"> 
+         <div className="flex justify-start align-center items-center mb-10 gap-3">  
           <img src={bookIcon}/>
-          <h4 className="text-2xl font-bold">Publisher: {v.publisher}</h4>
+          <h4 className="text-3xl font-bold">Publisher: {v.publisher}</h4>
           </div>
 
-          <h4 className="text-2xl font-bold">About This Book</h4>
+          <h4 className="text-3xl font-bold mb-5">About This Book</h4>
 
           {v.description && <span className="mb-4 whitespace-pre-line">{v.description}</span>}
           <div className="text-sm">Published: {v.publishedDate || "—"}</div>
