@@ -54,16 +54,14 @@ return (
         </aside>
 
      
-        <section className="bg-white rounded-2xl p-6 pl-[190px] overflow-visible">
-         <div className="flex justify-start align-center items-center gap-2">  
+        <section className="bg-white rounded-2xl p-6  overflow-visible">
+         <div className="flex justify-start align-center items-center">  
           <img src={bookIcon}/>
           <h4 className="text-2xl font-bold">Publisher: {v.publisher}</h4>
           </div>
 
-          <h2 className="text-2xl font-bold mb-2">{v.title || "Untitled"}</h2>
-          <div className="text-sm text-gray-600 mb-4">
-            {(v.authors && v.authors.join(", ")) || "Unknown author"}
-          </div>
+          <h4 className="text-2xl font-bold">About This Book</h4>
+
           {v.description && <span className="mb-4 whitespace-pre-line">{v.description}</span>}
           <div className="text-sm">Published: {v.publishedDate || "—"}</div>
           <div className="text-sm">Pages: {v.pageCount || "—"}</div>
