@@ -33,13 +33,16 @@ export default function Details() {
 
   return (
     <div className="">
-      <Link to="/Books" className="inline-block mb-4 underline">
+      {/* <Link to="/Books" className="inline-block mb-4 underline">
         ← Back to Books
-      </Link>
+      </Link> */}
 
 
       <div className="w-full h-[100vh] flex gap-[10%]">
-        <div className="w-[40%] h-[100vh] bg-black border border-black-500">
+        <div className="w-[40%] h-[100vh] bg-black">
+
+              <h1 className="text-2xl font-bold mb-2 text-white">{v.title || "Untitled"}</h1>
+              <h4 className="text-[#FFDD7E]"> {v.authors[0] || "Untitled"} </h4>
           {cover ? (
             <img src={cover} alt={v.title} className="w-full rounded-lg" />
           ) : (
