@@ -15,29 +15,45 @@ export const removeFromCart = (item) => {
     };
 };
 
-export const fetchBooks = (queryOrOpts, maxResultsArg) => async (dispatch) => {
-  dispatch({ type: 'FETCH_BOOKS_REQUEST' });
+export const getRequest = (config) => async (dispatch) => {
+  if (!config || !config.url) {
+    throw new Error('getRequest: "url" обязателен');
+  }
 
-  // Backward-compatible разбор аргументов
-  const opts = typeof queryOrOpts === 'string'
-    ? { q: queryOrOpts, maxResults: maxResultsArg }
-    : (queryOrOpts || {});
+  const method = config.method || 'GET';
+  const params = config.params || undefined;
+  const data = config.data || undefined;
+  const headers = config.headers || undefined;
 
-  const {
-    q = '',
-    maxResults = 30,
-    orderBy = 'relevance',
-  } = opts;
+  const startType = config.startType || 'GET_REQUEST_START';
+  const successType = config.successType || 'GET_REQUEST_SUCCESS';
+  const failureType = config.failureType || 'GET_REQUEST_FAILURE';
+
+  const meta = config.meta;
+
+  dispatch({ type: startType, meta });
 
   try {
-    const res = await axios.get('https://www.googleapis.com/books/v1/volumes', {
-      params: { q, maxResults, orderBy,
-        key: 'AIzaSyBSdsuDMR2_8Rj8oSkDhvYfilF5gPz4e5A' },
+    const response = await axios({
+      url: config.url,
+      method,
+      params,
+      data,
+      headers,
     });
 
-    dispatch({ type: 'FETCH_BOOKS_SUCCESS', payload: res.data.items || [] });
-  } catch (error) {
-    dispatch({ type: 'FETCH_BOOKS_FAILURE', payload: error.message });
+    let payload = response.data;
+    if (typeof config.onSuccess === 'function') {
+      payload = config.onSuccess(response);
+    }
+
+    dispatch({ type: successType, payload, meta });
+  } catch (err) {
+    let errorPayload = err.message;
+    if (typeof config.onError === 'function') {
+      errorPayload = config.onError(err);
+    }
+    dispatch({ type: failureType, payload: errorPayload, error: true, meta });
   }
 };
 

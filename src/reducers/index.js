@@ -1,31 +1,43 @@
 const initialState = {
   cart: [],
   isLogged: false,
+  books: [],
+  loading: false,
+  error: null,
+  book: null,
+  bookLoading: false,
+  bookError: null,
 };
 
-const rootReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case "ADD_TO_CART":
-      return { ...state, cart: [...state.cart, action.payload] };
-
-    case "REMOVE_FROM_CART":
-      return {
-        ...state,
-        cart: state.cart.filter((item) => item.id !== action.payload.id),
-      };
-
-    case "FETCH_BOOKS_REQUEST":
-      return { ...state, loading: true, error: null };
-
-    case "FETCH_BOOKS_SUCCESS":
-      return { ...state, loading: false, books: action.payload };
-
-    case "FETCH_BOOKS_FAILURE":
-      return { ...state, loading: false, error: action.payload };
-
-    default:
-      return state;
+export default function rootReducer(state = initialState, action) {
+  if (action.type === 'GET_REQUEST_START') {
+    if (action.meta && action.meta.mode === 'detail') {
+      return { ...state, bookLoading: true, bookError: null, book: null };
+    }
+    return { ...state, loading: true, error: null };
   }
-};
 
-export default rootReducer;
+  if (action.type === 'GET_REQUEST_SUCCESS') {
+    if (action.meta && action.meta.mode === 'detail') {
+      return { ...state, bookLoading: false, book: action.payload };
+    }
+    return { ...state, loading: false, books: action.payload };
+  }
+
+  if (action.type === 'GET_REQUEST_FAILURE') {
+    if (action.meta && action.meta.mode === 'detail') {
+      return { ...state, bookLoading: false, bookError: action.payload };
+    }
+    return { ...state, loading: false, error: action.payload };
+  }
+
+  if (action.type === 'ADD_TO_CART') {
+    return { ...state, cart: [...state.cart, action.payload] };
+  }
+
+  if (action.type === 'REMOVE_FROM_CART') {
+    return { ...state, cart: state.cart.filter((i) => i.id !== action.payload.id) };
+  }
+
+  return state;
+}

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import mainPhoto from "../../assets/main-photo.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchBooks } from "../../actions"; 
+import { getRequest } from "../../actions";
 import { Link } from "react-router-dom";
+
+const API_KEY = "AIzaSyBSdsuDMR2_8Rj8oSkDhvYfilF5gPz4e5A";
 
 function Home() {
   const dispatch = useDispatch();
@@ -11,18 +13,15 @@ function Home() {
   const [query, setQuery] = useState("Лев Толстой");
   const [limit, setLimit] = useState(4);
 
-  // Первичная загрузка
   useEffect(() => {
-    dispatch(fetchBooks({ q: query, maxResults: limit }));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // один раз при маунте
-
-  const onSearch = (e) => {
-    e.preventDefault();
-    dispatch(fetchBooks({ q: query.trim(), maxResults: Number(limit) || 4 }));
-  };
-
-
+    dispatch(getRequest({
+      url: "https://www.googleapis.com/books/v1/volumes",
+      params: { q: query, maxResults: limit, orderBy: "relevance", key: API_KEY },
+      meta: { mode: "list" },
+      onSuccess: (res) => Array.isArray(res.data?.items) ? res.data.items : [],
+    }));
+    // если нужно грузить только один раз при маунте, поставь [] вместо [query, limit]
+  }, [dispatch, query, limit]);
 
   return (
     <>
@@ -37,47 +36,43 @@ function Home() {
       <div className="px-6 py-8">
         <div className="flex items-center justify-center gap-4 mb-10 mt-10">
           <h1 className="text-[48px] font-bold">Our Best Picks</h1>
-
         </div>
 
         {loading && <p>Загрузка…</p>}
         {error && <p className="text-red-600">Ошибка: {error}</p>}
 
-        <div className="flex justify-center align-center">
-
-        {!loading && !error && (
-          <ul className="grid grid-cols-2 grid-rows-2 gap-5">
-            {books.map((b) => {
-              const v = b.volumeInfo || {};
-              const thumb =
-                v.imageLinks?.thumbnail ||
-                v.imageLinks?.smallThumbnail ||
-                "";
-              return (
-                <li key={b.id} className="p-3 rounded-xl shadow">
-                  {thumb ? (
-                     <Link to={`/details/${b.id}`}> 
-                    <img
-                      src={thumb}
-                      alt={v.title}
-                      className="w-full h-65 object-cover rounded-lg mb-2"
-                    />
-                    </Link>
-                  ) : (
-                    <div className="w-full h-48 bg-gray-200 rounded-lg mb-2" />
-                  )}
-                  <div className="font-semibold text-sm line-clamp-2">
-                    {v.title || "Untitled"}
-                  </div>
-                  <div className="text-xs text-gray-600">
-                    {(v.authors && v.authors.join(", ")) || "Unknown author"}
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
-        )}
-         </div>
+        <div className="flex justify-center items-center">
+          {!loading && !error && (
+            <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+              {books.map((b) => {
+                const v = b.volumeInfo || {};
+                const thumb =
+                  v.imageLinks?.thumbnail || v.imageLinks?.smallThumbnail || "";
+                return (
+                  <li key={b.id} className="p-3 rounded-xl shadow">
+                    {thumb ? (
+                      <Link to={`/details/${b.id}`}>
+                        <img
+                          src={thumb}
+                          alt={v.title}
+                          className="w-full h-64 object-cover rounded-lg mb-2"
+                        />
+                      </Link>
+                    ) : (
+                      <div className="w-full h-64 bg-gray-200 rounded-lg mb-2" />
+                    )}
+                    <div className="font-semibold text-sm line-clamp-2">
+                      {v.title || "Untitled"}
+                    </div>
+                    <div className="text-xs text-gray-600">
+                      {(v.authors && v.authors.join(", ")) || "Unknown author"}
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+        </div>
       </div>
     </>
   );

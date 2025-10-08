@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, fetchBooks } from "../../actions";
+import { addToCart, getRequest } from "../../actions";
 import item from "../Data/itemsData";
 import "./Books.css";
 
 function Books() {
+  const API_KEY = 'AIzaSyBSdsuDMR2_8Rj8oSkDhvYfilF5gPz4e5A';
   const dispatch = useDispatch();
     const { books = [], loading, error } = useSelector((state) => state.app || state);
   
@@ -19,16 +20,18 @@ function Books() {
     }
   };
 
-    // Первый запрос при маунте
-    useEffect(() => {
-      dispatch(fetchBooks(query));
-    }, [dispatch]); 
-  
-    const onSearch = (e) => {
-      e.preventDefault();
-      if (!query.trim()) return;
-      dispatch(fetchBooks(query.trim()));
-    };
+dispatch(getRequest({
+  url: 'https://www.googleapis.com/books/v1/volumes',
+  params: { q: query, maxResults: 10, orderBy: 'relevance', key: API_KEY },
+  meta: { mode: 'list' },
+  onSuccess: (res) => {
+    const data = res.data;
+    if (data && Array.isArray(data.items)) {
+      return data.items;
+    }
+    return [];
+  },
+}));
 
   return (
     <div className="App">
@@ -59,7 +62,7 @@ function Books() {
 
         <h1 className="font-bold text-[40px] text-[#CC9600] flex justify-center mt-10 mb-10">Explore All Books Here</h1>
         <div className="flex items-center justify-center gap-4 mb-10 mt-10">
-          <form onSubmit={onSearch} className="flex items-center gap-2">
+          {/* <form onSubmit={onSearch} className="flex items-center gap-2">
             <input
               type="text"
               value={query}
@@ -73,7 +76,7 @@ function Books() {
             >
               Search
             </button>
-          </form>
+          </form> */}
         </div>
 
         {loading && <p>Загрузка…</p>}
