@@ -37,16 +37,20 @@ function Cart() {
   };
 
   return (
-    <div className="flex">
-      <div className="w-full h-[100%]">
+    <div className="flex justify-between align-center w-full">
+      <div className="w-[30%] py-20 h-[100%]">
         <img
           src={mainPhoto}
           alt="Main background"
-          className="w-[30%] object-cover"
+          className="w-[100%] object-cover"
         />
       </div>
 
-      <h1 className="cart-heading">Cart have {cart.length} items</h1>
+
+      <div className="border border-black-500 w-[70%]"> 
+
+
+      <h1 className="text-[32px] font-bold text-[#4B330B] text-center mt-14">Your Cart Details</h1>
       <ul className="cart-items">
         {getGroupedCart().map((item, index) => (
           <li key={index} className="cart-item">
@@ -67,10 +71,12 @@ function Cart() {
           </li>
         ))}
       </ul>
-      <div>
-        Cart Checkout:
-        <p>Total Price: {calculateTotalPrice()}$</p>
+      <div className="grid items-center justify-center text-center mt-10">
+
+        <p className="text-[28px] font-bold">Total Price: {calculateTotalPrice()}$</p>
+        <button className="w-[295px] h-[55px] text-[27px] mt-7 border border-[#000000]-5 rounded-xl">Proceed to Checkout</button>
       </div>
+    </div>
     </div>
   );
 }

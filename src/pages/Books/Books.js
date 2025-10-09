@@ -1,22 +1,37 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, getRequest } from "../../actions";
-import item from "../Data/itemsData";
 import "./Books.css";
 
 function Books() {
   const API_KEY = 'AIzaSyBSdsuDMR2_8Rj8oSkDhvYfilF5gPz4e5A';
   const dispatch = useDispatch();
-  
   const { books = [], loading, error } = useSelector((state) => state.app || state);
-  
+
   const [query, setQuery] = useState("fairy tales");
   const [addedItemIds, setAddedItemIds] = useState([]);
   const [limit, setLimit] = useState(20);
-  const handleAddToCart = (item) => {
-    if (!addedItemIds.includes(item.id)) {
-      dispatch(addToCart(item));
-      setAddedItemIds([...addedItemIds, item.id]);
+
+  const handleAddToCart = (b) => {
+    // volumeInfo для названия/картинки, saleInfo для цены
+    const v = b.volumeInfo || {};
+    const s = b.saleInfo || {};
+    const thumb = v.imageLinks?.thumbnail || v.imageLinks?.smallThumbnail || "";
+    const price =
+      (s.listPrice && Number(s.listPrice.amount)) ||
+      (s.retailPrice && Number(s.retailPrice.amount)) ||
+      0; // фолбэк, если цены нет
+
+    const cartItem = {
+      id: b.id,
+      name: v.title || "Untitled",
+      price,
+      url: thumb,
+    };
+
+    if (!addedItemIds.includes(cartItem.id)) {
+      dispatch(addToCart(cartItem));
+      setAddedItemIds((prev) => [...prev, cartItem.id]);
     }
   };
 
@@ -31,49 +46,10 @@ function Books() {
 
   return (
     <div className="App">
-      {/* <div className="divBooks">
-        {item.map((item, index) => (
-          <div className="bookCard" key={index}>
-            <img src={item.url} className="forImg" alt={item.name} />
-            <h3>{item.name}</h3>
-            <p>{item.price}$</p>
-
-            <button
-              onClick={() => handleAddToCart(item)}
-              className="addBtn"
-              disabled={addedItemIds.includes(item.id)}
-              style={{
-                backgroundColor: addedItemIds.includes(item.id)
-                  ? "#c6c6c6"
-                  : "#c39797",
-              }}
-            >
-              {addedItemIds.includes(item.id) ? "Added to Cart" : "Add to Cart"}
-            </button>
-          </div>
-        ))}
-      </div> */}
-
       <div className="px-6 py-8">
-
-        <h1 className="font-bold text-[40px] text-[#CC9600] flex justify-center mt-10 mb-10">Explore All Books Here</h1>
-        <div className="flex items-center justify-center gap-4 mb-10 mt-10">
-          {/* <form onSubmit={onSearch} className="flex items-center gap-2">
-            <input
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search books…"
-              className="border rounded-lg px-3 py-2 outline-none w-[400px]"
-            />
-            <button
-              type="submit"
-              className="px-4 py-2 rounded-lg bg-black text-white"
-            >
-              Search
-            </button>
-          </form> */}
-        </div>
+        <h1 className="font-bold text-[40px] text-[#CC9600] flex justify-center mt-10 mb-10">
+          Explore All Books Here
+        </h1>
 
         {loading && <p>Загрузка…</p>}
         {error && <p className="text-red-600">Ошибка: {error}</p>}
@@ -82,29 +58,38 @@ function Books() {
           <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
             {books.map((b) => {
               const v = b.volumeInfo || {};
-              const thumb =
-                v.imageLinks?.thumbnail ||
-                v.imageLinks?.smallThumbnail ||
-                "";
+              const thumb = v.imageLinks?.thumbnail || v.imageLinks?.smallThumbnail || "";
+              const title = v.title || "Untitled";
+              const authors = (v.authors && v.authors.join(", ")) || "Unknown author";
+
+              const isAdded = addedItemIds.includes(b.id);
+
               return (
-                <li key={b.id} className="p-3 rounded-xl shadow">
+                <li key={b.id} className="p-3 rounded-xl shadow flex flex-col">
                   {thumb ? (
                     <img
                       src={thumb}
-                      alt={v.title}
+                      alt={title}
                       className="w-full h-48 object-cover rounded-lg mb-2"
                     />
                   ) : (
                     <div className="w-full h-48 bg-gray-200 rounded-lg mb-2" />
                   )}
-                  <div className="font-semibold text-sm line-clamp-2">
-                    {v.title || "Untitled"}
-                  </div>
-                  <div className="text-xs text-gray-600">
-                    {(v.authors && v.authors.join(", ")) || "Unknown author"}
-                  </div>
 
-                  
+                  <div className="font-semibold text-sm line-clamp-2">{title}</div>
+                  <div className="text-xs text-gray-600 mb-3">{authors}</div>
+
+                  <button
+                    onClick={() => handleAddToCart(b)}
+                    disabled={isAdded}
+                    className={`mt-auto px-3 py-2 rounded-lg text-sm border transition
+                      ${isAdded
+                        ? "bg-gray-300 border-gray-300 text-gray-600 cursor-not-allowed"
+                        : "bg-black text-white border-black hover:opacity-90"}
+                    `}
+                  >
+                    {isAdded ? "Added to Cart" : "Add to Cart"}
+                  </button>
                 </li>
               );
             })}
