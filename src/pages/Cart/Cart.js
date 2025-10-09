@@ -2,7 +2,6 @@ import React from "react";
 import mainPhoto from "../../assets/cart-pic.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart } from "../../actions";
-import "./Cart.css";
 
 function Cart() {
   const cart = useSelector((state) => state.cart);
@@ -51,23 +50,25 @@ function Cart() {
 
 
       <h1 className="text-[32px] font-bold text-[#4B330B] text-center mt-14">Your Cart Details</h1>
-      <ul className="cart-items">
+      <ul className="flex justify-around align-center mt-10">
         {getGroupedCart().map((item, index) => (
-          <li key={index} className="cart-item">
-            <div className="item-details">
-              <img className="item-image" src={item.url} alt={item.name} />
+          <li key={index} className="border border-black-300 rounded-xl w-fit px-10 py-5">
+            <div className="items-center text-center">
+              <div className="flex justify-center align-center mb-5"> 
+              <img className="w-[90%] h-[50%]" src={item.url} alt={item.name} />
+              </div>
               <div>
-                <h3 className="item-name">Item: {item.name}</h3>
-                <p className="item-price">Price: {item.price}$</p>
+                <h3 className="item-name"> {item.name}</h3>
+                <p className="item-price">{item.price}$</p>
                 <p className="item-quantity">Quantity: {item.quantity}</p>
               </div>
             </div>
-            <button
+            {/* <button
               className="remove-button"
               onClick={() => deleteFromCart(item)}
             >
               x
-            </button>
+            </button> */}
           </li>
         ))}
       </ul>
