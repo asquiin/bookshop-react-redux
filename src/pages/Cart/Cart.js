@@ -63,12 +63,6 @@ function Cart() {
                 <p className="item-quantity">Quantity: {item.quantity}</p>
               </div>
             </div>
-            {/* <button
-              className="remove-button"
-              onClick={() => deleteFromCart(item)}
-            >
-              x
-            </button> */}
           </li>
         ))}
       </ul>
