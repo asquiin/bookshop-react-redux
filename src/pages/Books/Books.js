@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, getRequest } from "../../actions";
+import { Link } from "react-router-dom";
 import "./Books.css";
 
 function Books() {
@@ -67,11 +68,13 @@ function Books() {
               return (
                 <li key={b.id} className="p-3 rounded-xl shadow flex flex-col">
                   {thumb ? (
+                     <Link to={`/details/${b.id}`}> 
                     <img
                       src={thumb}
                       alt={title}
                       className="w-full h-48 object-cover rounded-lg mb-2"
                     />
+                    </Link>
                   ) : (
                     <div className="w-full h-48 bg-gray-200 rounded-lg mb-2" />
                   )}
