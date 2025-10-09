@@ -58,9 +58,9 @@ function Cart() {
               <img className="w-[90%] h-[50%]" src={item.url} alt={item.name} />
               </div>
               <div>
-                <h3 className="item-name"> {item.name}</h3>
+                <h3 className="font-bold"> {item.name}</h3>
                 <p className="item-price">{item.price}$</p>
-                <p className="item-quantity">Quantity: {item.quantity}</p>
+                <p className="item-quantity">Copies {item.quantity}</p>
               </div>
             </div>
           </li>
