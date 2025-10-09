@@ -2,7 +2,7 @@ import footerBooks from "../assets/footer-books.svg";
 import footerIcon from "../assets/footer-icon.svg";
 
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const footerStats = [
   { value: "800+", label: "Book Listing" },
@@ -27,6 +27,7 @@ const footerText = {
 
 function Footer() {
     const { pathname } = useLocation();
+      const navigate = useNavigate(); 
   const isHome = pathname === "/";
   return (
     <footer className="">
@@ -57,7 +58,7 @@ function Footer() {
               ))}
             </div>
             <div className="pt-5 flex justify-start">
-              <button className="w-[193px] h-[43px] border border-[#CC9600] rounded-lg">
+              <button    onClick={() => navigate("/about")} className="w-[193px] h-[43px] border border-[#CC9600] rounded-lg">
                 {footerText.buttonLabel}
               </button>
             </div>
