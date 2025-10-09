@@ -27,7 +27,7 @@ function About() {
           </div>
 
           <h4 className="text-3xl text-[#CC9600]">Our branches</h4>
-          <div className="mt-5 flex text-center">
+          <div className="mt-10 flex text-center mb-10">
             <ul>
               <li className="text-[24px] text-[#FCEE59]">Kurunegala</li>
               <li className="text-[17px] text-[#D6CE80]">
@@ -77,6 +77,15 @@ function About() {
               </li>
             </ul>
           </div>
+
+
+                    <h4 className="text-3xl text-[#CC9600]">Our Commitment</h4>
+
+                          <div className="text-white mt-10 mb-10">
+          At Neth BookPoint, we are committed to providing a welcoming and inspiring environment for all book enthusiasts. Each of our branches is staffed with knowledgeable and friendly team members ready to assist you in finding the perfect book. Whether you're looking for the latest bestseller, a rare find, or a cozy place to read, Neth BookPoint is your destination. We believe in the power of reading to transform lives and build community. Join us at one of our branches or explore our offerings online. We're here to support your reading journey and make your book shopping experience enjoyable and fulfilling.
+          </div>
+
+
         </div>
       </div>
     </>
