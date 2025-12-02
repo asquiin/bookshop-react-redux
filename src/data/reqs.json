@@ -1,0 +1,211 @@
+[
+    {
+        "id": 348706,
+        "categoryId": 28443,
+        "requestType": "base",
+        "isGovernment": false,
+        "autoPublication": false,
+        "attributes": [
+            {
+                "attributeCode": "ntin",
+                "value": null
+            },
+            {
+                "attributeCode": "gtin",
+                "value": "28019944"
+            },
+            {
+                "attributeCode": "xtin",
+                "value": null
+            },
+            {
+                "attributeCode": "name_ru",
+                "value": "САЛАТ МОРКОВНЫЙ С МОРСКОЙ КАПУСТОЙ"
+            },
+            {
+                "attributeCode": "name_kk",
+                "value": "ТЕҢІЗ ОРАМЖАПЫРАҒЫ МЕН СӘБІЗ САЛАТЫ"
+            },
+            {
+                "attributeCode": "name_en",
+                "value": null
+            },
+            {
+                "attributeCode": "short_name_ru",
+                "value": "САЛАТ МОРК.С МОР.КАП"
+            },
+            {
+                "attributeCode": "short_name_kk",
+                "value": "ТЕҢІЗ ОРАМЖАПЫРАҒЫ МЕН СӘБІЗ САЛАТЫ"
+            },
+            {
+                "attributeCode": "paket",
+                "value": null
+            },
+            {
+                "attributeCode": "country",
+                "value": "KZ"
+            },
+            {
+                "attributeCode": "brand",
+                "value": "SMALL"
+            },
+            {
+                "attributeCode": "article",
+                "value": "156045"
+            },
+            {
+                "attributeCode": "mpn_code",
+                "value": null
+            },
+            {
+                "attributeCode": "tnved",
+                "value": "2106909808"
+            },
+            {
+                "attributeCode": "a0238c5b",
+                "value": null
+            },
+            {
+                "attributeCode": "measure",
+                "index": 1,
+                "attributes": [
+                    {
+                        "attributeCode": "quantity",
+                        "value": 1000
+                    }
+                ]
+            }
+        ],
+        "imageFiles": []
+    },
+    {
+        "id": 215611,
+        "categoryId": 7725,
+        "requestType": "base",
+        "isGovernment": false,
+        "autoPublication": false,
+        "attributes": [
+            {
+                "attributeCode": "ntin",
+                "value": null
+            },
+            {
+                "attributeCode": "gtin",
+                "value": "123456789"
+            },
+            {
+                "attributeCode": "xtin",
+                "value": null
+            },
+            {
+                "attributeCode": "name_ru",
+                "value": "Водка Xaoma Silver, крепостью 40,0% об."
+            },
+            {
+                "attributeCode": "name_kk",
+                "value": "Xaoma Silver арағы, күштілігі–мөл. 40 %-ы"
+            },
+            {
+                "attributeCode": "name_en",
+                "value": null
+            },
+            {
+                "attributeCode": "short_name_ru",
+                "value": "Водка"
+            },
+            {
+                "attributeCode": "short_name_kk",
+                "value": null
+            },
+            {
+                "attributeCode": "paket",
+                "value": null
+            },
+            {
+                "attributeCode": "country",
+                "value": "KZ"
+            },
+            {
+                "attributeCode": "brand",
+                "value": "Хаома"
+            },
+            {
+                "attributeCode": "article",
+                "value": null
+            },
+            {
+                "attributeCode": "mpn_code",
+                "value": null
+            },
+            {
+                "attributeCode": "tnved",
+                "value": "2208601100"
+            },
+            {
+                "attributeCode": "a0238c5b",
+                "value": 16
+            },
+            {
+                "attributeCode": "measure",
+                "index": 1,
+                "attributes": [
+                    {
+                        "attributeCode": "unit_category",
+                        "value": "volumeUnits"
+                    },
+                    {
+                        "attributeCode": "quantity",
+                        "value": 0.5
+                    }
+                ]
+            },
+            {
+                "attributeCode": "131777b5",
+                "index": 1,
+                "attributes": [
+                    {
+                        "attributeCode": "eaes",
+                        "value": false
+                    },
+                    {
+                        "attributeCode": "marking_required_status",
+                        "value": false
+                    },
+                    {
+                        "attributeCode": "szpt",
+                        "value": false
+                    },
+                    {
+                        "attributeCode": "made_in_country",
+                        "value": false
+                    }
+                ]
+            },
+            {
+                "attributeCode": "098223e4",
+                "index": 1,
+                "attributes": [
+                    {
+                        "attributeCode": "producer_identifier",
+                        "value": "950440000010"
+                    },
+                    {
+                        "attributeCode": "producer_country",
+                        "value": "KZ"
+                    },
+                    {
+                        "attributeCode": "a4282e5d",
+                        "value": "АО \"Кокшетауские минеральные воды\""
+                    }
+                ]
+            }
+        ],
+        "imageFiles": [
+            {
+                "fileName": "818bb013-6d6d-4fb6-b698-9705b848f134.jpg",
+                "imageType": "front"
+            }
+        ]
+    }
+]
