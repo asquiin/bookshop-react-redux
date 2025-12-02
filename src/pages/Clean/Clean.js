@@ -1,3 +1,5 @@
+import szpt from "../../data/szpt.json";
+
 function Clean() {
 
       return ( 
