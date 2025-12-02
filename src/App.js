@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Books from "./pages/Books/Books";
 import Cart from "./pages/Cart/Cart";
+import Clean from "./pages/Clean/Clean";
 import Details from "./pages/Books/Details";
 import Footer from "./components/Footer";
 import About from "./pages/Home/About";
@@ -35,6 +36,10 @@ class App extends Component {
               <li>
                 <Link to="/Cart">Cart</Link>
               </li>
+
+                      <li>
+                <Link to="/Clean">Clean</Link>
+              </li>
             </ul>
 
             <div className="flex">
@@ -48,6 +53,7 @@ class App extends Component {
               <Route path="/Books" element={<Books />} />
               <Route path="/About" element={<About />} />
               <Route path="/Cart" element={<Cart />} />
+                 <Route path="/Clean" element={<Clean />} />
               <Route path="/details/:id" element={<Details />} />
             </Routes>
           </main>
